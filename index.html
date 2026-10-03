@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moza Fadilla Rahiq | Academic & Professional ePortfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Elegant Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f172a',
+                            900: '#0b1120',
+                            950: '#070a12',
+                        },
+                        teal: {
+                            700: '#0f766e',
+                            800: '#115e59',
+                            900: '#134e4a',
+                        },
+                        gold: {
+                            300: '#fde047',
+                            400: '#facc15',
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        },
+                        sand: '#fdfbf7',
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 50%, #78350f 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gold-gradient-text {
+            background: linear-gradient(135deg, #fef08a 0%, #facc15 50%, #ca8a04 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tab-active {
+            border-bottom: 2px solid #ca8a04;
+            color: #ca8a04;
+            font-weight: 600;
+        }
+        .dark .tab-active {
+            border-bottom: 2px solid #facc15;
+            color: #facc15;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="font-sans bg-sand text-slate-800 dark:bg-navy-950 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col justify-between">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 glass-card shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Name -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchSection('home')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-teal-800 to-emerald-600 text-white flex items-center justify-center font-serif font-bold text-xl shadow-md">
+                        M
+                    </div>
+                    <div>
+                        <span class="font-serif font-bold text-lg sm:text-xl tracking-wide text-slate-900 dark:text-slate-100 block leading-tight">Moza Fadilla Rahiq</span>
+                        <span class="text-xs text-teal-700 dark:text-teal-400 font-medium">Pharmacy Student • English 3 KJ08</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-6 text-sm font-medium">
+                    <button onclick="switchSection('home')" class="nav-btn transition-colors hover:text-gold-600 dark:hover:text-gold-400 text-slate-700 dark:text-slate-300" id="nav-home">Home</button>
+                    <button onclick="switchSection('reflection')" class="nav-btn transition-colors hover:text-gold-600 dark:hover:text-gold-400 text-slate-700 dark:text-slate-300" id="nav-reflection">Learning Reflections</button>
+                    <button onclick="switchSection('units')" class="nav-btn transition-colors hover:text-gold-600 dark:hover:text-gold-400 text-slate-700 dark:text-slate-300" id="nav-units">Course Units</button>
+                </div>
+
+                <!-- Actions / Dark Mode -->
+                <div class="flex items-center space-x-3">
+                    <button id="themeToggle" onclick="toggleTheme()" class="p-2.5 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors" title="Toggle Theme">
+                        <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                        <i class="fa-solid fa-sun text-lg hidden dark:block text-gold-400"></i>
+                    </button>
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 dark:border-slate-800 bg-sand/95 dark:bg-navy-900/95 backdrop-blur-lg px-4 pt-3 pb-6 space-y-3">
+            <button onclick="switchSection('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-50 dark:hover:bg-navy-800">Home</button>
+            <button onclick="switchSection('reflection'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-50 dark:hover:bg-navy-800">Learning Reflections</button>
+            <button onclick="switchSection('units'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-50 dark:hover:bg-navy-800">Course Units Hub</button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- SECTION 1: HOMEPAGE -->
+        <section id="section-home" class="space-y-12 animate-fadeIn">
+            <!-- Hero Card -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-navy-900 to-teal-900 text-white p-8 sm:p-12 lg:p-16 shadow-2xl">
+                <!-- Background Geometric Overlay -->
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -top-20 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 max-w-3xl space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-teal-800/50 border border-teal-500/30 text-teal-200 text-xs font-semibold uppercase tracking-widest">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>English 3 KJ08 Academic ePortfolio</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white leading-tight">
+                        Moza Fadilla <span class="gold-gradient-text">Rahiq</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-300 font-light leading-relaxed">
+                        Pharmacy Student specializing in <strong class="text-teal-300 font-normal">Pharmaceutical Analysis & Quality Assurance</strong>. Empowering clinical precision with adaptive communication.
+                    </p>
+
+                    <!-- Personal Branding Attributes Badges -->
+                    <div class="pt-2">
+                        <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">Core Personal Branding Attributes</p>
+                        <div class="flex flex-wrap gap-2.5">
+                            <span class="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-teal-500/40 text-teal-200 text-xs sm:text-sm font-medium hover:scale-105 transition-transform flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-sliders text-teal-400"></i> Adaptive
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-teal-500/40 text-teal-200 text-xs sm:text-sm font-medium hover:scale-105 transition-transform flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-people-group text-teal-400"></i> Collaborative
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-teal-500/40 text-teal-200 text-xs sm:text-sm font-medium hover:scale-105 transition-transform flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-comments text-teal-400"></i> Communicative
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-teal-500/40 text-teal-200 text-xs sm:text-sm font-medium hover:scale-105 transition-transform flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-lightbulb text-teal-400"></i> Creative
+                            </span>
+                            <span class="px-3.5 py-1.5 rounded-xl bg-slate-800/80 border border-teal-500/40 text-teal-200 text-xs sm:text-sm font-medium hover:scale-105 transition-transform flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-solid fa-shield-halved text-teal-400"></i> Resilient
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <button onclick="switchSection('reflection')" class="px-6 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-slate-950 font-semibold text-sm hover:opacity-95 shadow-lg shadow-gold-500/20 transition-all flex items-center gap-2">
+                            <span>Explore Reflections</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </button>
+                        <button onclick="switchSection('units')" class="px-6 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-white font-medium text-sm border border-slate-700 transition-all flex items-center gap-2">
+                            <span>Browse 6 Units</span>
+                            <i class="fa-solid fa-book-open text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Purpose of ePortfolio Card -->
+            <div class="glass-card rounded-2xl p-8 sm:p-10 shadow-lg border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-bl-full pointer-events-none"></div>
+                <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                    <div class="w-16 h-16 rounded-2xl bg-teal-100 dark:bg-teal-950/80 text-teal-700 dark:text-teal-400 flex items-center justify-center text-2xl shrink-0 shadow-inner">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="text-xs font-semibold uppercase tracking-widest text-teal-700 dark:text-teal-400">ePortfolio Mission Statement</div>
+                        <h2 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Purpose of this ePortfolio</h2>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed font-light">
+                            Designed for professional life, the primary goal of this ePortfolio is to systematically improve and upgrade my 
+                            <strong class="text-slate-900 dark:text-white font-semibold">communication, writing, speaking, and listening</strong> abilities. As a pharmacy scholar, bridging scientific analysis with clear, compassionate, and persuasive professional communication is paramount for my future career in pharmaceutical research, clinical consultations, and multidisciplinary healthcare teams.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="glass-card p-6 rounded-2xl space-y-3 hover:translate-y-1 transition-transform border-t-4 border-teal-600">
+                    <div class="text-teal-600 dark:text-teal-400 text-2xl"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Writing Mastery</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Crafting concise research proposals, formal pharmaceutical correspondence, and structured academic analyses.</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3 hover:translate-y-1 transition-transform border-t-4 border-gold-500">
+                    <div class="text-gold-600 dark:text-gold-400 text-2xl"><i class="fa-solid fa-microphone-lines"></i></div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Public Speaking</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Delivering structured, engaging clinical presentations and presenting complex pharmacological data clearly.</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3 hover:translate-y-1 transition-transform border-t-4 border-emerald-500">
+                    <div class="text-emerald-600 dark:text-emerald-400 text-2xl"><i class="fa-solid fa-ear-listen"></i></div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Active Listening</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Empathetic listening in patient consultations and active engagement during peer scientific discussions.</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl space-y-3 hover:translate-y-1 transition-transform border-t-4 border-sky-500">
+                    <div class="text-sky-600 dark:text-sky-400 text-2xl"><i class="fa-solid fa-flask text-2xl"></i></div>
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">Pharmacy Branding</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400">Positioning identity as an adaptive and resilient pharmaceutical scientist with strong ethical leadership.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: REFLECTION OF LEARNING -->
+        <section id="section-reflection" class="hidden space-y-10 animate-fadeIn">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <span class="px-3.5 py-1.5 rounded-full bg-gold-100 dark:bg-gold-950/60 text-gold-700 dark:text-gold-300 text-xs font-bold uppercase tracking-widest border border-gold-300/30">Course Self-Reflection</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-900 dark:text-white">Reflection of Learning</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm">Synthesizing challenges, personal strengths, growth areas, and real-world pharmacy application from English 3 KJ08.</p>
+            </div>
+
+            <!-- Reflection Tabs -->
+            <div class="flex justify-center border-b border-slate-200 dark:border-slate-800 space-x-2 sm:space-x-8 text-sm sm:text-base">
+                <button onclick="switchReflectionTab('challenges')" id="refl-tab-challenges" class="tab-btn pb-3 px-2 font-medium transition-colors tab-active">
+                    <i class="fa-solid fa-mountain mr-1.5"></i> Course Challenges
+                </button>
+                <button onclick="switchReflectionTab('strengths')" id="refl-tab-strengths" class="tab-btn pb-3 px-2 font-medium text-slate-500 dark:text-slate-400 transition-colors">
+                    <i class="fa-solid fa-star mr-1.5"></i> Strengths & Growth
+                </button>
+                <button onclick="switchReflectionTab('application')" id="refl-tab-application" class="tab-btn pb-3 px-2 font-medium text-slate-500 dark:text-slate-400 transition-colors">
+                    <i class="fa-solid fa-briefcase mr-1.5"></i> Pharmacy Application
+                </button>
+            </div>
+
+            <!-- Tab Content 1: Challenges & Overcoming Them -->
+            <div id="refl-content-challenges" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass-card p-6 rounded-2xl space-y-4 border-l-4 border-amber-500">
+                        <div class="flex items-center space-x-3">
+                            <span class="p-2 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </span>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Challenge 1: Technical Vocabulary vs. Conciseness</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            As a pharmacy student, I frequently defaulted to overly complex scientific jargon when communicating ideas. In English 3 KJ08, structuring concise short proposals and formal emails was initially difficult because I struggled to condense technical pharmacological concepts for non-expert audiences.
+                        </p>
+                        <div class="p-3 bg-slate-100 dark:bg-navy-900 rounded-xl text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                            <strong class="text-teal-600 dark:text-teal-400 block"><i class="fa-solid fa-check-circle mr-1"></i> How I Overcame It:</strong>
+                            <p>I adopted the BLUF (Bottom Line Up Front) approach in emails and utilized plain-language summaries prior to scientific breakdowns. Practicing peer reviews in class helped refine my brevity.</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl space-y-4 border-l-4 border-amber-500">
+                        <div class="flex items-center space-x-3">
+                            <span class="p-2 rounded-lg bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-400">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </span>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white">Challenge 2: Presentation Anxiety & Body Language</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Delivering live oral presentations caused fidgeting and monotonous tone. Managing non-verbal cues—such as eye contact, open posture, and pacing—while explaining complex research slides was a significant hurdle.
+                        </p>
+                        <div class="p-3 bg-slate-100 dark:bg-navy-900 rounded-xl text-xs text-slate-700 dark:text-slate-300 space-y-1">
+                            <strong class="text-teal-600 dark:text-teal-400 block"><i class="fa-solid fa-check-circle mr-1"></i> How I Overcame It:</strong>
+                            <p>I utilized video mock presentations to record my non-verbal body language. Applying purposeful pauses and pre-planned slide triggers helped reduce anxiety and built my resilience under pressure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 2: Strengths & Improvement Areas -->
+            <div id="refl-content-strengths" class="hidden space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Strengths Card -->
+                    <div class="glass-card p-6 rounded-2xl space-y-4 border-l-4 border-emerald-500">
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Identified Strengths
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i>
+                                <div><strong class="text-slate-900 dark:text-white">Structured Academic Writing:</strong> Strong capability in crafting well-organized short proposals, logically breaking down problems, objectives, and solutions.</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i>
+                                <div><strong class="text-slate-900 dark:text-white">Adaptive Dialogue:</strong> Ability to adjust tone fluently depending on context—shifting between formal professional emails and collaborative oral communication.</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-angle-right text-emerald-500 mt-1"></i>
+                                <div><strong class="text-slate-900 dark:text-white">Visual Presentation Design:</strong> High aesthetic sense in slide design, keeping visual clutter low to emphasize core pharmacological metrics.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Improvement Areas Card -->
+                    <div class="glass-card p-6 rounded-2xl space-y-4 border-l-4 border-gold-500">
+                        <h3 class="font-bold text-xl text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-bullseye text-gold-500"></i> Focus Areas for Continuous Improvement
+                        </h3>
+                        <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-arrow-up text-gold-500 mt-1"></i>
+                                <div><strong class="text-slate-900 dark:text-white">Impromptu Speaking Agility:</strong> Expanding vocal confidence and clarity when answering unexpected questions during Q&A sessions.</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-arrow-up text-gold-500 mt-1"></i>
+                                <div><strong class="text-slate-900 dark:text-white">Vocal Variety & Cadence:</strong> Incorporating dynamic pitch and pacing variations to prevent vocal monotony during technical lectures.</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fa-solid fa-arrow-up text-gold-500 mt-1"></i>
+                                <div><strong class="text-slate-900 dark:text-white">Active Non-verbal Consistency:</strong> Maintaining relaxed shoulder alignment and deliberate hand gestures throughout long presentations.</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content 3: Application to Professional Life -->
+            <div id="refl-content-application" class="hidden space-y-6">
+                <div class="glass-card p-8 rounded-2xl border border-teal-500/30 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="p-3 rounded-xl bg-teal-100 dark:bg-teal-900 text-teal-700 dark:text-teal-300 text-2xl">
+                            <i class="fa-solid fa-prescription-bottle-medical"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Translating Skills to Future Pharmacy Practice</h3>
+                            <p class="text-xs text-teal-600 dark:text-teal-400 font-medium">Bridging Academic Learning with Clinical & Industrial Professionalism</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <h4 class="font-bold text-teal-800 dark:text-teal-300 flex items-center gap-2">
+                                <i class="fa-solid fa-vial"></i> Pharmaceutical Research
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300">
+                                Proposal writing skills learned in class will directly translate to writing grant proposals, research ethics board applications, and analytical laboratory protocol documentations.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <h4 class="font-bold text-teal-800 dark:text-teal-300 flex items-center gap-2">
+                                <i class="fa-solid fa-user-doctor"></i> Interprofessional Consultation
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300">
+                                Oral communication and non-verbal awareness will empower collaborative consultations with physicians, nurses, and hospital staff, ensuring patient safety and accurate dosage advice.
+                            </p>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-navy-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <h4 class="font-bold text-teal-800 dark:text-teal-300 flex items-center gap-2">
+                                <i class="fa-solid fa-building-user"></i> Corporate & Regulatory Emails
+                            </h4>
+                            <p class="text-slate-600 dark:text-slate-300">
+                                Professional email etiquette will ensure authoritative yet respectful correspondence with pharmaceutical regulatory bodies (e.g., BPOM, FDA) and global industry vendors.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: COURSE UNITS HUB -->
+        <section id="section-units" class="hidden space-y-8 animate-fadeIn">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <span class="px-3.5 py-1.5 rounded-full bg-teal-100 dark:bg-teal-950/60 text-teal-800 dark:text-teal-300 text-xs font-bold uppercase tracking-widest border border-teal-300/30">Academic Portfolio Units</span>
+                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mt-2">Interactive Course Units</h2>
+                </div>
+                <p class="text-xs text-slate-500 dark:text-slate-400 max-w-xs">Select any unit to explore specific learning artifacts, interactive exercises, and key reflections.</p>
+            </div>
+
+            <!-- Unit Navigation Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-3 scrollbar-none text-xs sm:text-sm font-medium">
+                <button onclick="switchUnitTab('branding')" id="unit-tab-branding" class="unit-nav-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 whitespace-nowrap bg-teal-800 text-white shadow-sm transition-all">
+                    1. Personal Branding
+                </button>
+                <button onclick="switchUnitTab('emails')" id="unit-tab-emails" class="unit-nav-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 whitespace-nowrap bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    2. Effective Emails
+                </button>
+                <button onclick="switchUnitTab('proposals')" id="unit-tab-proposals" class="unit-nav-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 whitespace-nowrap bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    3. Short Proposals
+                </button>
+                <button onclick="switchUnitTab('nonverbal')" id="unit-tab-nonverbal" class="unit-nav-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 whitespace-nowrap bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    4. Non-verbal Comm.
+                </button>
+                <button onclick="switchUnitTab('presentations')" id="unit-tab-presentations" class="unit-nav-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 whitespace-nowrap bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    5. Presentations
+                </button>
+                <button onclick="switchUnitTab('oral')" id="unit-tab-oral" class="unit-nav-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 whitespace-nowrap bg-white dark:bg-navy-900 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    6. Oral Communication
+                </button>
+            </div>
+
+            <!-- UNIT 1: PERSONAL BRANDING -->
+            <div id="unit-content-branding" class="unit-content space-y-6">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6 border-t-4 border-teal-600">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold text-teal-700 dark:text-teal-400 uppercase">Unit 01 Portfolio Page</span>
+                            <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Personal Branding in Pharmacy</h3>
+                        </div>
+                        <span class="p-3 bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 rounded-xl"><i class="fa-solid fa-address-card text-xl"></i></span>
+                    </div>
+
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Personal branding in pharmaceutical sciences is more than self-promotion—it is establishing trust, scientific integrity, and clear professional value. My personal brand combines rigorous analytical competence with adaptive interpersonal skills.
+                    </p>
+
+                    <!-- Elevator Pitch Artifact Box -->
+                    <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 to-navy-900 text-white space-y-3 shadow-md">
+                        <div class="flex items-center justify-between text-xs text-gold-400 font-mono">
+                            <span>ELEVATOR_PITCH_SCRIPT.TXT</span>
+                            <span class="px-2 py-0.5 rounded bg-gold-400/20">30-Second Pitch</span>
+                        </div>
+                        <blockquote class="italic text-slate-200 text-sm sm:text-base leading-relaxed border-l-2 border-gold-400 pl-4">
+                            "Hello! I am Moza Fadilla Rahiq, an undergraduate pharmacy student specializing in pharmaceutical quality analysis. I bring an adaptive, resilient mindset and collaborative communication skills to bridge complex drug formulation data with patient safety and healthcare innovation. My goal is to advance clinical outcome precision through analytical excellence."
+                        </blockquote>
+                    </div>
+
+                    <!-- Personal Attributes Matrix -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 pt-2">
+                        <div class="p-3 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-center">
+                            <i class="fa-solid fa-sliders text-teal-600 dark:text-teal-400 mb-1 text-base"></i>
+                            <div class="font-bold text-xs text-slate-900 dark:text-white">Adaptive</div>
+                            <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Quickly adjusts to evolving lab tech & protocols.</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-center">
+                            <i class="fa-solid fa-people-group text-teal-600 dark:text-teal-400 mb-1 text-base"></i>
+                            <div class="font-bold text-xs text-slate-900 dark:text-white">Collaborative</div>
+                            <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Thrives in interdisciplinary healthcare teams.</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-center">
+                            <i class="fa-solid fa-comments text-teal-600 dark:text-teal-400 mb-1 text-base"></i>
+                            <div class="font-bold text-xs text-slate-900 dark:text-white">Communicative</div>
+                            <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Translates science for diverse audiences.</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-center">
+                            <i class="fa-solid fa-lightbulb text-teal-600 dark:text-teal-400 mb-1 text-base"></i>
+                            <div class="font-bold text-xs text-slate-900 dark:text-white">Creative</div>
+                            <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Solves analytical problems with fresh approaches.</div>
+                        </div>
+                        <div class="p-3 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 text-center">
+                            <i class="fa-solid fa-shield-halved text-teal-600 dark:text-teal-400 mb-1 text-base"></i>
+                            <div class="font-bold text-xs text-slate-900 dark:text-white">Resilient</div>
+                            <div class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5">Perseveres through rigorous research trials.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIT 2: EFFECTIVE EMAILS -->
+            <div id="unit-content-emails" class="unit-content hidden space-y-6">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6 border-t-4 border-blue-600">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase">Unit 02 Portfolio Page</span>
+                            <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Effective Emails & Correspondence</h3>
+                        </div>
+                        <span class="p-3 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-xl"><i class="fa-solid fa-envelope text-xl"></i></span>
+                    </div>
+
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Professional email communication in healthcare demands clarity, conciseness, and proper formatting. This unit focused on subject line precision, professional salutations, body structuring (BLUF), and actionable closing remarks.
+                    </p>
+
+                    <!-- Interactive Email Generator / Sample Viewer -->
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 space-y-4">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+                            <span class="font-bold text-sm text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                                <i class="fa-solid fa-laptop-code text-blue-500"></i> Interactive Email Sample: Academic/Lab Inquiry
+                            </span>
+                            <div class="flex gap-2">
+                                <button onclick="copyEmailSample()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium transition-colors flex items-center gap-1">
+                                    <i class="fa-regular fa-copy"></i> <span id="copyBtnText">Copy Email Text</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Email Template Box -->
+                        <div id="emailSampleText" class="font-mono text-xs sm:text-sm bg-white dark:bg-navy-950 p-4 rounded-xl border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 space-y-2">
+                            <div><strong class="text-slate-900 dark:text-white">Subject:</strong> Request for Analytical Lab Access - Moza Fadilla Rahiq (English 3 KJ08 / Pharmacy)</div>
+                            <div class="border-t border-slate-100 dark:border-slate-900 pt-2">Dear Dr. Aris,</div>
+                            <div>I hope this email finds you well.</div>
+                            <div>I am writing to respectfully request permission to access the HPLC Analysis Laboratory this coming Thursday, October 8th, between 10:00 AM and 1:00 PM to prepare samples for our English 3 pharmacy research presentation.</div>
+                            <div>Attached to this email is the approved safety protocol and faculty supervisor approval form. Please let me know if any further documentation is needed.</div>
+                            <div>Thank you for your time and assistance.</div>
+                            <div>Sincerely,<br><strong>Moza Fadilla Rahiq</strong><br>Undergraduate Student, Faculty of Pharmacy<br>Student ID: 2023-0801-44</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIT 3: SHORT PROPOSALS -->
+            <div id="unit-content-proposals" class="unit-content hidden space-y-6">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6 border-t-4 border-amber-600">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold text-amber-600 dark:text-amber-400 uppercase">Unit 03 Portfolio Page</span>
+                            <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Short Proposals</h3>
+                        </div>
+                        <span class="p-3 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 rounded-xl"><i class="fa-solid fa-file-contract text-xl"></i></span>
+                    </div>
+
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Structuring technical proposals requires concise problem statements, clear objectives, methodology, timeline, and projected outcomes. This unit honed my ability to pitch pharmaceutical initiatives effectively.
+                    </p>
+
+                    <!-- Proposal Blueprint Interactive Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <span class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Section 1</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">Problem Statement</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Identifying inefficiencies in community pharmacy medication consultation times and patient adherence tracking.
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <span class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Section 2</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">Proposed Solution</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Implementation of a standardized digital dosage summary protocol and visual counseling guide for patients.
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 space-y-2">
+                            <span class="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase">Section 3</span>
+                            <h4 class="font-bold text-base text-slate-900 dark:text-white">Impact & Feasibility</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Expected 25% reduction in dosage misunderstanding with minimal cost implementation over a 4-week pilot.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIT 4: NON-VERBAL COMMUNICATION -->
+            <div id="unit-content-nonverbal" class="unit-content hidden space-y-6">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6 border-t-4 border-emerald-600">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase">Unit 04 Portfolio Page</span>
+                            <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Non-verbal Communication</h3>
+                        </div>
+                        <span class="p-3 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 rounded-xl"><i class="fa-solid fa-eye text-xl"></i></span>
+                    </div>
+
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Non-verbal cues account for over 60% of interpersonal communication impact. In pharmacy, posture, eye contact, tone, and facial expressions project professional authority and empathetic care during patient encounters.
+                    </p>
+
+                    <!-- Interactive Self-Assessment Matrix -->
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 space-y-4">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-emerald-500"></i> Non-verbal Communication Self-Checklist
+                        </h4>
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <label class="flex items-center space-x-3 p-3 bg-white dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-emerald-500 transition-colors">
+                                <input type="checkbox" checked class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                                <span class="text-slate-700 dark:text-slate-300">Maintain consistent 3-5 second eye contact with audience members.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 bg-white dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-emerald-500 transition-colors">
+                                <input type="checkbox" checked class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                                <span class="text-slate-700 dark:text-slate-300">Adopt an open torso posture without crossing arms or slouching.</span>
+                            </label>
+                            <label class="flex items-center space-x-3 p-3 bg-white dark:bg-navy-950 rounded-xl border border-slate-200 dark:border-slate-800 cursor-pointer hover:border-emerald-500 transition-colors">
+                                <input type="checkbox" class="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500">
+                                <span class="text-slate-700 dark:text-slate-300">Use open-hand gestures above waist height to emphasize key findings.</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIT 5: EFFECTIVE PRESENTATIONS -->
+            <div id="unit-content-presentations" class="unit-content hidden space-y-6">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6 border-t-4 border-purple-600">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold text-purple-600 dark:text-purple-400 uppercase">Unit 05 Portfolio Page</span>
+                            <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Effective Presentations</h3>
+                        </div>
+                        <span class="p-3 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300 rounded-xl"><i class="fa-solid fa-display text-xl"></i></span>
+                    </div>
+
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Delivering impactful scientific presentations requires visual simplicity, narrative storytelling, and rhythmic delivery. This unit emphasized crafting structured slides without cognitive overload.
+                    </p>
+
+                    <!-- Presentation Best Practices Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-5 rounded-xl bg-purple-50/50 dark:bg-navy-900 border border-purple-200 dark:border-purple-900/50 space-y-2">
+                            <h4 class="font-bold text-sm text-purple-800 dark:text-purple-300 flex items-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> 6x6 Rule & Visual Design
+                            </h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Limiting slide text to 6 bullet points and 6 words per line. Prioritizing high-resolution analytical diagrams over dense text.
+                            </p>
+                        </div>
+                        <div class="p-5 rounded-xl bg-purple-50/50 dark:bg-navy-900 border border-purple-200 dark:border-purple-900/50 space-y-2">
+                            <h4 class="font-bold text-sm text-purple-800 dark:text-purple-300 flex items-center gap-2">
+                                <i class="fa-solid fa-comments-question-check"></i> Q&A Handling Strategy
+                            </h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Employing the "Listen-Acknowledge-Answer-Verify" cycle during academic Q&A panels to maintain composure and clarity.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIT 6: ORAL COMMUNICATION -->
+            <div id="unit-content-oral" class="unit-content hidden space-y-6">
+                <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-6 border-t-4 border-teal-600">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-xs font-semibold text-teal-600 dark:text-teal-400 uppercase">Unit 06 Portfolio Page</span>
+                            <h3 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Oral Communication Skills</h3>
+                        </div>
+                        <span class="p-3 bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 rounded-xl"><i class="fa-solid fa-headset text-xl"></i></span>
+                    </div>
+
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Oral communication encompasses verbal clarity, pronunciation, active listening, and adaptive dialogue in professional pharmaceutical settings.
+                    </p>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-navy-900 border border-slate-200 dark:border-slate-800 space-y-4">
+                        <h4 class="font-bold text-sm text-slate-900 dark:text-white">Oral Communication Competencies</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                            <div class="p-3 bg-white dark:bg-navy-950 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <strong class="text-teal-700 dark:text-teal-300 block mb-1"><i class="fa-solid fa-volume-high mr-1"></i> Pronunciation Precision</strong>
+                                Mastering English technical terms (e.g., *pharmacokinetics*, *chromatography*, *bioavailability*).
+                            </div>
+                            <div class="p-3 bg-white dark:bg-navy-950 rounded-lg border border-slate-200 dark:border-slate-800">
+                                <strong class="text-teal-700 dark:text-teal-300 block mb-1"><i class="fa-solid fa-ear-listen mr-1"></i> Active Listening</strong>
+                                Paraphrasing speaker points during class debates to confirm understanding prior to responding.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-navy-950/50 py-8 mt-16 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+            <div>
+                <p class="font-semibold text-slate-700 dark:text-slate-300">Moza Fadilla Rahiq — ePortfolio</p>
+                <p>Pharmacy Undergraduate • English 3 KJ08</p>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="hover:text-gold-500 transition-colors cursor-pointer" onclick="switchSection('home')">Home</span>
+                <span>•</span>
+                <span class="hover:text-gold-500 transition-colors cursor-pointer" onclick="switchSection('reflection')">Reflections</span>
+                <span>•</span>
+                <span class="hover:text-gold-500 transition-colors cursor-pointer" onclick="switchSection('units')">Units</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // --- Navigation Logic ---
+        function switchSection(sectionId) {
+            // Hide all sections
+            document.getElementById('section-home').classList.add('hidden');
+            document.getElementById('section-reflection').classList.add('hidden');
+            document.getElementById('section-units').classList.add('hidden');
+
+            // Reset navbar styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-gold-600', 'dark:text-gold-400', 'font-bold');
+            });
+
+            // Show chosen section
+            const target = document.getElementById('section-' + sectionId);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            // Highlight nav item
+            const activeNav = document.getElementById('nav-' + sectionId);
+            if (activeNav) {
+                activeNav.classList.add('text-gold-600', 'dark:text-gold-400', 'font-bold');
+            }
+
+            // Scroll top smooth
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- Reflection Sub-Tabs Logic ---
+        function switchReflectionTab(tabKey) {
+            // Hide all reflection contents
+            document.getElementById('refl-content-challenges').classList.add('hidden');
+            document.getElementById('refl-content-strengths').classList.add('hidden');
+            document.getElementById('refl-content-application').classList.add('hidden');
+
+            // Reset tab button states
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-500', 'dark:text-slate-400');
+            });
+
+            // Show selected
+            document.getElementById('refl-content-' + tabKey).classList.remove('hidden');
+            const activeBtn = document.getElementById('refl-tab-' + tabKey);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('text-slate-500', 'dark:text-slate-400');
+        }
+
+        // --- Unit Hub Tabs Logic ---
+        function switchUnitTab(unitKey) {
+            // Hide all unit contents
+            document.querySelectorAll('.unit-content').forEach(el => el.classList.add('hidden'));
+
+            // Reset all unit buttons
+            document.querySelectorAll('.unit-nav-btn').forEach(btn => {
+                btn.classList.remove('bg-teal-800', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-white', 'dark:bg-navy-900', 'text-slate-700', 'dark:text-slate-300');
+            });
+
+            // Show selected unit content
+            const targetUnit = document.getElementById('unit-content-' + unitKey);
+            if (targetUnit) {
+                targetUnit.classList.remove('hidden');
+            }
+
+            // Highlight selected button
+            const activeBtn = document.getElementById('unit-tab-' + unitKey);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-teal-800', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('bg-white', 'dark:bg-navy-900', 'text-slate-700', 'dark:text-slate-300');
+            }
+        }
+
+        // --- Dark/Light Mode Theme Toggle ---
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Init theme on load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        // --- Mobile Menu Toggle ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- Clipboard Helper ---
+        function copyEmailSample() {
+            const textToCopy = `Subject: Request for Analytical Lab Access - Moza Fadilla Rahiq (English 3 KJ08 / Pharmacy)
+
+Dear Dr. Aris,
+
+I hope this email finds you well.
+
+I am writing to respectfully request permission to access the HPLC Analysis Laboratory this coming Thursday, October 8th, between 10:00 AM and 1:00 PM to prepare samples for our English 3 pharmacy research presentation.
+
+Attached to this email is the approved safety protocol and faculty supervisor approval form. Please let me know if any further documentation is needed.
+
+Thank you for your time and assistance.
+
+Sincerely,
+Moza Fadilla Rahiq
+Undergraduate Student, Faculty of Pharmacy
+Student ID: 2023-0801-44`;
+
+            const btnText = document.getElementById('copyBtnText');
+            
+            // Fallback execCommand for iframe compatibility
+            const textarea = document.createElement('textarea');
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                btnText.innerText = 'Copied!';
+                setTimeout(() => {
+                    btnText.innerText = 'Copy Email Text';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy', err);
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // Initialize view
+        window.onload = function() {
+            switchSection('home');
+        };
+    </script>
+</body>
+</html>
